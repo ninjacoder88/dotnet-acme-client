@@ -1,12 +1,22 @@
-﻿using System;
+﻿using DotNetAcmeClient.Logic;
+using System;
+using System.Threading.Tasks;
 
 namespace DotNetAcmeClient
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public async static Task Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var configuration = new AcmeRequestConfiguration("Ninja Software Consulting Certifice Manager 0.1 using ACME v02");
+
+            var r1 = await new AcmeCertificateRequest(configuration).GetNonceAsync();
+
+            var nonce = await r1.DoSomethingAsync();
+
+            Console.WriteLine(nonce);
+
+            Console.ReadLine();
         }
     }
 }
