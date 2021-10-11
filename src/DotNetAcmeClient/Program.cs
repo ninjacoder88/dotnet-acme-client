@@ -12,9 +12,9 @@ namespace DotNetAcmeClient
 
             var r1 = await new AcmeCertificateRequest(configuration).GetNonceAsync();
 
-            var nonce = await r1.DoSomethingAsync();
+            await r1.CreateAccountAsync();
 
-            Console.WriteLine(nonce);
+            Console.WriteLine();
 
             Console.ReadLine();
         }
