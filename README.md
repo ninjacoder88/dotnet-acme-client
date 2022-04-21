@@ -20,6 +20,12 @@ https://datatracker.ietf.org/doc/html/rfc8555#page-10
 *RFC 7515 - JSON Web Signatures (JWS)*
 https://datatracker.ietf.org/doc/html/rfc7515#section-3.3
 
+*RFC 7518 - JSON Web Algorithms (JWA)*
+https://datatracker.ietf.org/doc/html/rfc7518
+
+*RFC 7638 - JSON Weky Key (JWK)*
+https://datatracker.ietf.org/doc/html/rfc7638#section-3
+
 *Let's Encrypt Staging Server*
 https://acme-staging-v02.api.letsencrypt.org/directory
 

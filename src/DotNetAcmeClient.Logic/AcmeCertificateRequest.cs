@@ -48,7 +48,7 @@ namespace DotNetAcmeClient.Logic
         {
             var client = new HttpClient();
             client.BaseAddress = new Uri(_configuration.AcmeServerUrl);
-            client.DefaultRequestHeaders.Add("User-Agent", "Ninja Software Consulting Certifice Manager 0.1 using ACME v02");
+            client.DefaultRequestHeaders.Add("User-Agent", "Ninja Software Consulting Certificate Manager 0.1 using ACME v02");
             client.DefaultRequestHeaders.Add("Accept-Language", "en-US");
             return client;
         }

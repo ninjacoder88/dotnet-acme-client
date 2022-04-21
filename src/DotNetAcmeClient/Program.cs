@@ -8,7 +8,7 @@ namespace DotNetAcmeClient
     {
         public async static Task Main(string[] args)
         {
-            var configuration = new AcmeRequestConfiguration("Ninja Software Consulting Certifice Manager 0.1 using ACME v02");
+            var configuration = new AcmeRequestConfiguration("Ninja Software Consulting Certificate Manager 0.1 using ACME v02");
 
             var r1 = await new AcmeCertificateRequest(configuration).GetNonceAsync();
 

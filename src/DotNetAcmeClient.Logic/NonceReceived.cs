@@ -29,7 +29,7 @@ namespace DotNetAcmeClient.Logic
             //RSA rsa = RSA.Create();
             //Request request;
             string jws;
-            byte[] signedHash;
+            //byte[] signedHash;
             using (var rsa = RSA.Create())
             {
                 var header = new 
@@ -54,29 +54,14 @@ namespace DotNetAcmeClient.Logic
                 byte[] jwsSigningInput = Encoding.UTF8.GetBytes(combine);
 
 
-            
-                byte[] hash;
-                using(var sha256 = SHA256.Create())
-                {
-                    hash = sha256.ComputeHash(jwsSigningInput);
-                }
+                byte[] signedData = rsa.SignData(jwsSigningInput, HashAlgorithmName.SHA256, RSASignaturePadding.Pkcs1);
 
-                RSAPKCS1SignatureFormatter RSAFormatter = new RSAPKCS1SignatureFormatter(rsa);
-                RSAFormatter.SetHashAlgorithm("SHA256");
-
-                signedHash = RSAFormatter.CreateSignature(hash);
-
-                jws = "{\"payload\":\"" + jsonPayload + "\",\"protected\":\"" + jsonHeader + "\",\"signature\":\"" + Encoding.UTF8.GetString(signedHash) + "\"}";
-            
-                //request = new Request { Protected = jsonHeader, Payload = payload, Signature = Encoding.UTF8.GetString(signedHash) };
+                jws = "{\"payload\":" + jsonPayload + ",\"protected\":" + jsonHeader + ",\"signature\":\"" + "" + "\"}";
             }
-
-            //string json = JsonConvert.SerializeObject(request);
 
             var str = new StringContent(jws);
             str.Headers.Clear();
             str.Headers.ContentType = new MediaTypeHeaderValue("application/jose+json");
-
 
             var response = await _httpClient.PostAsync("new-acct", str);
             var responseContent = await response.Content.ReadAsStringAsync();
